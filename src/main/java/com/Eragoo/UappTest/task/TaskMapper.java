@@ -2,6 +2,7 @@ package com.Eragoo.UappTest.task;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper
 public interface TaskMapper {
@@ -9,4 +10,7 @@ public interface TaskMapper {
     Task commandToEntity(TaskCommand command);
 
     TaskDto entityToDto(Task task);
+
+    @Mapping(target = "id", ignore = true)
+    void updateEntityFromCommand(TaskCommand command, @MappingTarget Task task);
 }
