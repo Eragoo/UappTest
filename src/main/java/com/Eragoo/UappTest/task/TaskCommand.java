@@ -10,5 +10,6 @@ import java.time.Instant;
 public class TaskCommand {
     private String name;
     private String description;
+    private int priority;
     private Instant creationDate;
 }

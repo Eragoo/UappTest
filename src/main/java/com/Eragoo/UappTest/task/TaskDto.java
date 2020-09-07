@@ -11,5 +11,6 @@ public class TaskDto {
     private Long id;
     private String name;
     private String description;
+    private int priority;
     private Instant creationDate;
 }
