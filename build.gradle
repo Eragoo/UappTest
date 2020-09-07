@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation "io.springfox:springfox-boot-starter:$springfoxSwaggerVersion"
     implementation "org.mapstruct:mapstruct:$mapstructVersion"
+    implementation 'org.apache.commons:commons-lang3'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
