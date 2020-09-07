@@ -17,9 +17,18 @@ public class TaskService {
     }
 
     public TaskDto getById(long id) {
-        Task task = taskRepository
+        Task task = findTask(id);
+        return taskMapper.entityToDto(task);
+    }
+
+    private Task findTask(long id) {
+        return taskRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException("Task with id " + id + " not found"));
-        return taskMapper.entityToDto(task);
+    }
+
+    public void delete(long id) {
+        Task task = findTask(id);
+        taskRepository.delete(task);
     }
 }

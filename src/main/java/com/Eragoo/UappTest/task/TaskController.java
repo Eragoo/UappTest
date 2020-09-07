@@ -1,6 +1,7 @@
 package com.Eragoo.UappTest.task;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,5 +19,11 @@ public class TaskController {
     @GetMapping("/{id}")
     public ResponseEntity<TaskDto> getById(@PathVariable long id) {
         return ResponseEntity.ok(taskService.getById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+        taskService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
