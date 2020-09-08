@@ -18,7 +18,7 @@
 - ✔ User can add a new task to a column. <br>
     Specify  **column** field during creation (**POST** request to __api/task__) new __Task__ entity.<br>
     
-- ✔ User delete task.
+- ✔ User delete task.<br>
     **DELETE** request to __api/task/{id}__<br>
 
 - ✔ User can move task to another column.<br>
