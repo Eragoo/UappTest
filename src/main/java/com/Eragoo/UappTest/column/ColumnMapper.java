@@ -9,10 +9,12 @@ import org.mapstruct.MappingTarget;
 public interface ColumnMapper {
     ColumnSimpleDto entityToSimpleDto(Column column);
 
+    @Mapping(target = "deleted", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     @Mapping(target = "id", ignore = true)
     Column commandToEntity(ColumnCommand columnCommand);
 
+    @Mapping(target = "deleted", ignore = true)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "tasks", ignore = true)
     void updateEntityFromCommand(ColumnCommand command, @MappingTarget Column column);

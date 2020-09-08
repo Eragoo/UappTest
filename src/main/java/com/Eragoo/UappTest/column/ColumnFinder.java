@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 public class ColumnFinder {
     private ColumnRepository columnRepository;
 
-    public Column findColumn(Long columnId) {
+    public Column find(Long columnId) {
         return columnRepository
-                .findById(columnId)
+                .findByIdAndDeletedFalse(columnId)
                 .orElseThrow(() -> new NotFoundException("Column with id " + columnId + " not found"));
     }
 }

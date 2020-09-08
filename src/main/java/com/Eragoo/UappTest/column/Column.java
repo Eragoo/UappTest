@@ -19,4 +19,5 @@ public class Column {
     private int priority;
     @OneToMany(mappedBy = "column")
     private Set<Task> tasks;
+    private boolean deleted;
 }

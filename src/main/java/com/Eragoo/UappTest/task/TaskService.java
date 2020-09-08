@@ -2,9 +2,7 @@ package com.Eragoo.UappTest.task;
 
 import com.Eragoo.UappTest.column.Column;
 import com.Eragoo.UappTest.column.ColumnFinder;
-import com.Eragoo.UappTest.column.ColumnRepository;
 import com.Eragoo.UappTest.error.exception.NotFoundException;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -57,7 +55,7 @@ public class TaskService {
     private void updateColumn(@NonNull Task task, Long columnId) {
         Column column = null;
         if (nonNull(columnId)) {
-            column = columnFinder.findColumn(columnId);
+            column = columnFinder.find(columnId);
         }
         task.setColumn(column);
     }
