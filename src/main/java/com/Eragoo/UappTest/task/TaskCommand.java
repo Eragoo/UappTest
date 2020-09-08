@@ -12,4 +12,5 @@ public class TaskCommand {
     private String description;
     private int priority;
     private Instant creationDate;
+    private Long columnId;
 }
