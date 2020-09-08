@@ -15,4 +15,10 @@ public class ColumnController {
         ColumnSimpleDto dto = columnService.create(command);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ColumnDto> get(@PathVariable long id) {
+        ColumnDto dto = columnService.get(id);
+        return ResponseEntity.ok(dto);
+    }
 }
