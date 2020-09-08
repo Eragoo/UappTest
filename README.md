@@ -7,7 +7,7 @@
       
 - ✔ User can delete columns.<br>
      **DELETE** request to __api/column/{id}__<br>
-     All assigned Tasks in this Column deletes too.<Br>There could be another approach - assign Task to some default column or just unassign.<br> 
+     Request also deletes all Task assigned to deleted Column.<Br>There could be another approach - assign Task to some default column or just unassign.<br> 
      
 - ✔  User can change the order of the columns relative to each other.<br>
      **PUT** request to __api/column/{id}__ with changed **priority** field
