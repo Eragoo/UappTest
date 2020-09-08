@@ -22,7 +22,7 @@
     **DELETE** request to __api/task/{id}__<br>
 
 - ✔ User can move task to another column.<br>
-  Change **column** field in existing __Task__ entity using **PUT** request to __api/task/{id}__<br>
+  **PUT** request to __api/task/{id}__ with changed **priority** field<br>
   
 - ✔ User can change task order in the column.
     **PUT** request to __api/task/{id}__ with changed **priority** field
