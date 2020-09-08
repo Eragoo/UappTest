@@ -21,6 +21,7 @@ public class Task {
     private Instant creationDate;
     @ManyToOne
     private Column column;
+    private boolean deleted = false;
 
     @Override
     public boolean equals(Object o) {

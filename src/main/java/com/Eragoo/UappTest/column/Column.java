@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name = "\"column\"")
 public class Column {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

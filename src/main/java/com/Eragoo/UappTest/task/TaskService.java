@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static java.util.Objects.nonNull;
+
 @Service
 @AllArgsConstructor
 public class TaskService {
@@ -30,13 +32,15 @@ public class TaskService {
 
     private Task findTask(long id) {
         return taskRepository
-                .findById(id)
+                .findByIdAndDeletedFalse(id)
                 .orElseThrow(() -> new NotFoundException("Task with id " + id + " not found"));
     }
 
+    @Transactional
     public void delete(long id) {
         Task task = findTask(id);
-        taskRepository.delete(task);
+        task.setColumn(null);
+        task.setDeleted(true);
     }
 
     @Transactional
@@ -48,8 +52,11 @@ public class TaskService {
         return taskMapper.entityToDto(task);
     }
 
-    private void updateColumn(@NotNull Task task, long columnId) {
-        Column column = findColumn(columnId);
+    private void updateColumn(@NotNull Task task, Long columnId) {
+        Column column = null;
+        if (nonNull(columnId)) {
+            column = findColumn(columnId);
+        }
         task.setColumn(column);
     }
 
