@@ -2,7 +2,7 @@
 
 ## Requirements:
 
-- ✔️ User can create. <br>
+- ✔️ User can create column. <br>
      **POST** request to __api/column__<br>
       
 - ✔ User can delete columns.<br>
