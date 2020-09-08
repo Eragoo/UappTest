@@ -1,6 +1,6 @@
 package com.Eragoo.UappTest.column;
 
-import com.Eragoo.UappTest.error.exception.NotFoundException;
+import com.Eragoo.UappTest.error.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.Eragoo.UappTest.task;
 
 import com.Eragoo.UappTest.column.Column;
 import com.Eragoo.UappTest.column.ColumnFinder;
-import com.Eragoo.UappTest.error.exception.NotFoundException;
+import com.Eragoo.UappTest.error.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;

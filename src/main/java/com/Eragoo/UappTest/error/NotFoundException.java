@@ -1,4 +1,4 @@
-package com.Eragoo.UappTest.error.exception;
+package com.Eragoo.UappTest.error;
 
 import lombok.NoArgsConstructor;
 

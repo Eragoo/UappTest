@@ -1,7 +1,5 @@
 package com.Eragoo.UappTest.error;
 
-import com.Eragoo.UappTest.error.exception.ConflictException;
-import com.Eragoo.UappTest.error.exception.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +18,5 @@ public class ControllerAdviceExceptionHandler extends ResponseEntityExceptionHan
         log.error(ex.getMessage());
         ErrorResponseDto responseDto = new ErrorResponseDto(defaultIfEmpty(ex.getMessage(), "Not found exception"));
         return new ResponseEntity<>(responseDto, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(ConflictException.class)
-    public ResponseEntity<ErrorResponseDto> handleConflict(ConflictException ex) {
-        log.error(ex.getMessage());
-        ErrorResponseDto responseDto = new ErrorResponseDto(defaultIfEmpty(ex.getMessage(), "Conflict exception"));
-        return new ResponseEntity<>(responseDto, HttpStatus.CONFLICT);
     }
 }
