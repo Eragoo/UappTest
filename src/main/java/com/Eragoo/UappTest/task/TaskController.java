@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/task")
 @AllArgsConstructor
@@ -12,7 +14,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<TaskDto> create(@RequestBody TaskCommand command) {
+    public ResponseEntity<TaskDto> create(@Valid @RequestBody TaskCommand command) {
         TaskDto dto = taskService.create(command);
         return ResponseEntity.ok(dto);
     }
@@ -30,7 +32,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TaskDto> update(@PathVariable long id, @RequestBody TaskCommand command) {
+    public ResponseEntity<TaskDto> update(@PathVariable long id, @Valid @RequestBody TaskCommand command) {
         TaskDto dto = taskService.update(id, command);
         return ResponseEntity.ok(dto);
     }
