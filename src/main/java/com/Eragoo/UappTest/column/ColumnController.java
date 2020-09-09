@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class ColumnController {
     }
 
     @PostMapping
-    public ResponseEntity<ColumnSimpleDto> create(@RequestBody ColumnCommand command) {
+    public ResponseEntity<ColumnSimpleDto> create(@Valid @RequestBody ColumnCommand command) {
         ColumnSimpleDto dto = columnService.create(command);
         return ResponseEntity.ok(dto);
     }
@@ -32,7 +33,7 @@ public class ColumnController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ColumnSimpleDto> update(@PathVariable long id, @RequestBody ColumnCommand command) {
+    public ResponseEntity<ColumnSimpleDto> update(@PathVariable long id, @Valid @RequestBody ColumnCommand command) {
         ColumnSimpleDto dto = columnService.update(id, command);
         return ResponseEntity.ok(dto);
     }
