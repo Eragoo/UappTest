@@ -1,9 +1,7 @@
 package com.Eragoo.UappTest.column;
-
-import com.Eragoo.UappTest.task.TaskCommand;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
@@ -11,8 +9,8 @@ import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
-@Builder
-@JsonDeserialize(builder = ColumnCommand.ColumnCommandBuilder.class)
+@AllArgsConstructor
+@NoArgsConstructor
 public class ColumnCommand {
     @NotBlank(message = "Name must be not blank")
     private String name;

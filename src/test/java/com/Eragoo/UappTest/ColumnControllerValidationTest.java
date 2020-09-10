@@ -28,11 +28,7 @@ public class ColumnControllerValidationTest {
 
     @Test
     void whenInputInvalidDtoThenReturnsStatus422() throws Exception {
-        ColumnCommand command = ColumnCommand.builder()
-                .name("")
-                .priority(null)
-                .build();
-
+        ColumnCommand command = new ColumnCommand("", null);
         String body = objectMapper.writeValueAsString(command);
 
         performTaskCommandRequestsWithInvalidDto(body);
@@ -40,11 +36,7 @@ public class ColumnControllerValidationTest {
 
     @Test
     void whenInputColumnWithBlankNameThenReturnsStatus422() throws Exception {
-        ColumnCommand command = ColumnCommand.builder()
-                .name("")
-                .priority(1)
-                .build();
-
+        ColumnCommand command = new ColumnCommand("", 1);
         String body = objectMapper.writeValueAsString(command);
 
         performTaskCommandRequestsWithInvalidDto(body);
@@ -52,11 +44,7 @@ public class ColumnControllerValidationTest {
 
     @Test
     void whenInputTaskWithNullPriorityThenReturnsStatus422() throws Exception {
-        ColumnCommand command = ColumnCommand.builder()
-                .name("name")
-                .priority(null)
-                .build();
-
+        ColumnCommand command = new ColumnCommand("name", null);
         String body = objectMapper.writeValueAsString(command);
 
         performTaskCommandRequestsWithInvalidDto(body);
