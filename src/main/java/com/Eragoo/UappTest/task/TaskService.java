@@ -52,6 +52,14 @@ public class TaskService {
         return taskMapper.entityToDto(task);
     }
 
+    @Transactional
+    public TaskDto moveToAnotherColumn(long taskId, long columnId) {
+        Task task = findTask(taskId);
+        Column column = columnFinder.find(columnId);
+        task.setColumn(column);
+        return taskMapper.entityToDto(task);
+    }
+
     private void updateColumn(@NonNull Task task, Long columnId) {
         Column column = null;
         if (nonNull(columnId)) {

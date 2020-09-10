@@ -30,13 +30,7 @@ public class TaskControllerValidationTest {
 
     @Test
     void whenInputInvalidDtoThenReturnsStatus422() throws Exception {
-        TaskCommand task = TaskCommand.builder()
-                .creationDate(null)
-                .description("")
-                .name("")
-                .priority(null)
-                .build();
-
+        TaskCommand task = new TaskCommand("","",null, null, null);
         String body = objectMapper.writeValueAsString(task);
 
         performTaskCommandRequestsWithInvalidDto(body);
@@ -44,13 +38,7 @@ public class TaskControllerValidationTest {
 
     @Test
     void whenInputTaskWithBlankNameThenReturnsStatus422() throws Exception {
-        TaskCommand task = TaskCommand.builder()
-                .creationDate(Instant.now())
-                .description("desc")
-                .name("")
-                .priority(1)
-                .build();
-
+        TaskCommand task = new TaskCommand("","desc",1, Instant.now(), null);
         String body = objectMapper.writeValueAsString(task);
 
         performTaskCommandRequestsWithInvalidDto(body);
@@ -58,13 +46,7 @@ public class TaskControllerValidationTest {
 
     @Test
     void whenInputTaskWithBlankDescThenReturnsStatus422() throws Exception {
-        TaskCommand task = TaskCommand.builder()
-                .creationDate(Instant.now())
-                .description("")
-                .priority(1)
-                .name("name")
-                .build();
-
+        TaskCommand task = new TaskCommand("name","",1, Instant.now(), null);
         String body = objectMapper.writeValueAsString(task);
 
         performTaskCommandRequestsWithInvalidDto(body);
@@ -72,13 +54,7 @@ public class TaskControllerValidationTest {
 
     @Test
     void whenInputTaskWithEmptyCreationDateThenReturnsStatus422() throws Exception {
-        TaskCommand task = TaskCommand.builder()
-                .creationDate(null)
-                .description("desc")
-                .priority(1)
-                .name("name")
-                .build();
-
+        TaskCommand task = new TaskCommand("name","desc",1, null, null);
         String body = objectMapper.writeValueAsString(task);
 
         performTaskCommandRequestsWithInvalidDto(body);

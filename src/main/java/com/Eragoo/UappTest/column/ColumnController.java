@@ -1,5 +1,6 @@
 package com.Eragoo.UappTest.column;
 
+import com.Eragoo.UappTest.task.TaskDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,15 @@ public class ColumnController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ColumnDto> get(@PathVariable long id) {
-        ColumnDto dto = columnService.get(id);
+    public ResponseEntity<ColumnSimpleDto> get(@PathVariable long id) {
+        ColumnSimpleDto dto = columnService.get(id);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/{id}/tasks")
+    public ResponseEntity<List<TaskDto>> getColumnTasks(@PathVariable long id) {
+        List<TaskDto> allTasksInColumn = columnService.getAllTasksInColumn(id);
+        return ResponseEntity.ok(allTasksInColumn);
     }
 
     @PutMapping("/{id}")

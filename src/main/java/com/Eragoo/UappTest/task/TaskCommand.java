@@ -1,7 +1,7 @@
 package com.Eragoo.UappTest.task;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -9,8 +9,8 @@ import java.time.Instant;
 
 @Getter
 @Setter
-@Builder
-@JsonDeserialize(builder = TaskCommand.TaskCommandBuilder.class)
+@AllArgsConstructor
+@NoArgsConstructor
 public class TaskCommand {
     @NotBlank(message = "Name must be not blank")
     private String name;
