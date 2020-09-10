@@ -36,4 +36,10 @@ public class TaskController {
         TaskDto dto = taskService.update(id, command);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/{taskId}/move-to-column/{columnId}")
+    public ResponseEntity<TaskDto> moveToAnotherColumn(@PathVariable long taskId, @PathVariable long columnId) {
+        TaskDto taskDto = taskService.moveToAnotherColumn(taskId, columnId);
+        return ResponseEntity.ok(taskDto);
+    }
 }

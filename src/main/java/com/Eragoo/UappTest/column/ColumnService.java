@@ -1,10 +1,14 @@
 package com.Eragoo.UappTest.column;
 
+import com.Eragoo.UappTest.task.Task;
+import com.Eragoo.UappTest.task.TaskDto;
+import com.Eragoo.UappTest.task.TaskMapper;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +18,7 @@ public class ColumnService {
     private ColumnRepository columnRepository;
     private ColumnMapper columnMapper;
     private ColumnFinder columnFinder;
+    private TaskMapper taskMapper;
 
     public ColumnSimpleDto create(@NonNull ColumnCommand columnCommand) {
         Column column = columnMapper.commandToEntity(columnCommand);
@@ -21,9 +26,9 @@ public class ColumnService {
         return columnMapper.entityToSimpleDto(saved);
     }
 
-    public ColumnDto get(long id) {
+    public ColumnSimpleDto get(long id) {
         Column column = columnFinder.find(id);
-        return columnMapper.entityToDto(column);
+        return columnMapper.entityToSimpleDto(column);
     }
 
     @Transactional
@@ -45,6 +50,15 @@ public class ColumnService {
         return columns
                 .stream()
                 .map(columnMapper::entityToSimpleDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<TaskDto> getAllTasksInColumn(long columnId) {
+        Column column = columnFinder.find(columnId);
+        return column.getTasks()
+                .stream()
+                .map(taskMapper::entityToDto)
+                .sorted(Comparator.comparingInt(TaskDto::getPriority))
                 .collect(Collectors.toList());
     }
 }
