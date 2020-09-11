@@ -3,6 +3,7 @@ package com.Eragoo.UappTest.column;
 import com.Eragoo.UappTest.task.Task;
 import com.Eragoo.UappTest.task.TaskDto;
 import com.Eragoo.UappTest.task.TaskMapper;
+import com.Eragoo.UappTest.task.TaskRepository;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class ColumnService {
     private ColumnMapper columnMapper;
     private ColumnFinder columnFinder;
     private TaskMapper taskMapper;
+    private TaskRepository taskRepository;
 
     public ColumnSimpleDto create(@NonNull ColumnCommand columnCommand) {
         Column column = columnMapper.commandToEntity(columnCommand);
@@ -54,11 +56,9 @@ public class ColumnService {
     }
 
     public List<TaskDto> getAllTasksInColumn(long columnId) {
-        Column column = columnFinder.find(columnId);
-        return column.getTasks()
+        return taskRepository.findAllByColumn_IdAndDeletedFalseOrderByPriority(columnId)
                 .stream()
                 .map(taskMapper::entityToDto)
-                .sorted(Comparator.comparingInt(TaskDto::getPriority))
                 .collect(Collectors.toList());
     }
 }
