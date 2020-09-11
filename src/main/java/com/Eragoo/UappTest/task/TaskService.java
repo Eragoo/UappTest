@@ -67,4 +67,11 @@ public class TaskService {
         }
         task.setColumn(column);
     }
+
+    @Transactional
+    public TaskDto changePriority(long taskId, int newPriority) {
+        Task task = findTask(taskId);
+        task.setPriority(newPriority);
+        return taskMapper.entityToDto(task);
+    }
 }

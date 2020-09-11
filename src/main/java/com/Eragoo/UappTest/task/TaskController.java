@@ -37,9 +37,15 @@ public class TaskController {
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/{taskId}/move-to-column/{columnId}")
-    public ResponseEntity<TaskDto> moveToAnotherColumn(@PathVariable long taskId, @PathVariable long columnId) {
+    @PutMapping("/{taskId}/move-to-column")
+    public ResponseEntity<TaskDto> moveToAnotherColumn(@PathVariable long taskId, @RequestParam long columnId) {
         TaskDto taskDto = taskService.moveToAnotherColumn(taskId, columnId);
+        return ResponseEntity.ok(taskDto);
+    }
+
+    @PutMapping("/{taskId}/change-priority")
+    public ResponseEntity<TaskDto> changePriority(@PathVariable long taskId, @RequestParam int newPriority) {
+        TaskDto taskDto = taskService.changePriority(taskId, newPriority);
         return ResponseEntity.ok(taskDto);
     }
 }
