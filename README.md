@@ -22,11 +22,11 @@
     **DELETE** request to __api/task/{id}__<br>
 
 - ✔ User can move task to another column.<br>
-  **GET** request to __api/task/{taskId}/move-to-column/{columnId}__ moves Task with id **taskId** to Column with id **columnId**<br>
+  **PUT** request to __/api/task/{taskId}/move-to-column?columnId={columnId}__ moves Task with id **taskId** to Column with id **columnId**<br>
   
 - ✔ User can change task order in the column.<br>
-    **PUT** request to __api/task/{id}__ with changed **priority** field<br>
-    **GET** request to __api/column/{id}/tasks__ returns sorted list of Tasks for that column<br>
+    **PUT** request to __/api/task/{taskId}/change-priority?newPriority={priority}__ with changed **priority** field<br>
+    **GET** request to __api/column/{id}/tasks__ returns sorted (by priority field) list of Tasks for that column<br>
 
 
 ## Additional features:
